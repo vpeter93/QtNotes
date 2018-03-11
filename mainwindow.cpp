@@ -6,6 +6,31 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    connect (ui->actionh2 , SIGNAL (triggered()), this, SLOT(h2ActionSlot()));
+    connect (ui->actionbold , SIGNAL (triggered()), this, SLOT(boldActionSlot()));
+    connect (ui->actionlinethrout , SIGNAL (triggered()), this, SLOT(lineThroutActionSlot()));
+    connect (ui->actionnormal , SIGNAL (triggered()), this, SLOT(normalActionSlot()));
+}
+void MainWindow::h2ActionSlot()
+{
+    ui->textEdit->textCursor().insertHtml("<h2>"+ui->textEdit->textCursor().selectedText()+"</h2>");
+}
+void MainWindow::lineThroutActionSlot()
+{
+    ui->textEdit->textCursor().insertHtml("<s>"+ui->textEdit->textCursor().selectedText()+"</s>");
+}
+void MainWindow::normalActionSlot()
+{
+    QTextCharFormat format;
+    format.setFontWeight(QFont::Normal);
+    ui->textEdit->textCursor().setCharFormat(format);
+}
+
+void MainWindow::boldActionSlot()
+{
+    QTextCharFormat format;
+    format.setFontWeight(QFont::Bold);
+    ui->textEdit->textCursor().mergeCharFormat(format);
 }
 
 MainWindow::~MainWindow()

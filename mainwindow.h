@@ -20,10 +20,16 @@ public:
     void saveNotes();
     void closeEvent(QCloseEvent *event);
     void readSettings();
+
     ~MainWindow();
 
 private:
     Ui::MainWindow *ui;
+private slots:
+    void h2ActionSlot();
+    void lineThroutActionSlot();
+    void boldActionSlot();
+    void normalActionSlot();
 };
 
 #endif // MAINWINDOW_H
