@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
-
+RC_ICONS += QtNotes.ico
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = NotesQt
@@ -29,3 +29,5 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES +=
