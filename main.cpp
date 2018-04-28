@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationVersion("1.0.0");
     w.readSettings();
     w.loadNotes();
+    w.loadConfig();
     w.show();
 
     return a.exec();

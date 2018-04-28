@@ -80,6 +80,7 @@
    <addaction name="actionbold"/>
    <addaction name="actionlinethrout"/>
    <addaction name="actionnormal"/>
+   <addaction name="actionColor"/>
   </widget>
   <action name="actionh2">
    <property name="icon">
@@ -135,6 +136,18 @@
     <font>
      <pointsize>11</pointsize>
     </font>
+   </property>
+  </action>
+  <action name="actionColor">
+   <property name="icon">
+    <iconset>
+     <normaloff>img/palettaButton.png</normaloff>img/palettaButton.png</iconset>
+   </property>
+   <property name="text">
+    <string>Color</string>
+   </property>
+   <property name="toolTip">
+    <string>Choose the background color</string>
    </property>
   </action>
  </widget>

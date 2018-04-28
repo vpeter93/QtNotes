@@ -8,7 +8,7 @@ QT       += core gui
 RC_ICONS += Macsek-Notes.ico
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = NotesQt
+TARGET = QtNotes
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
