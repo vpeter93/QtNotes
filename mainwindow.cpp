@@ -57,14 +57,14 @@ MainWindow::~MainWindow()
 }
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-    QSettings settings("MyCompany", "MyApp");
+    QSettings settings("varga", "QtNotes");
     settings.setValue("geometry", saveGeometry());
     settings.setValue("windowState", saveState());
     QMainWindow::closeEvent(event);
 }
 void MainWindow::readSettings()
 {
-    QSettings settings("MyCompany", "MyApp");
+    QSettings settings("varga", "QtNotes");
     restoreGeometry(settings.value("geometry").toByteArray());
     restoreState(settings.value("windowState").toByteArray());
     this->setGeometry(this->geometry());
@@ -79,11 +79,10 @@ void MainWindow::loadNotes()
         return;
     }
     QTextStream in(&file);
-    in.setCodec("UTF-8");
     QString html="";
     while(!in.atEnd())
     {
-        html.append(in.readLine());
+        html.append(in.readLine().toUtf8());
     }
     ui->textEdit->setHtml(html);
     file.close();
@@ -94,7 +93,7 @@ void MainWindow::saveNotes()
     QFile file("1");
     file.open(QIODevice::WriteOnly | QIODevice::Text);
     QTextStream out(&file);
-    out.setCodec("UTF-8");
+    out.setEncoding(QStringConverter::Utf8);
 
     out.setGenerateByteOrderMark(false);
     out << ui->textEdit->toHtml();
@@ -109,11 +108,10 @@ void MainWindow::loadConfig()
         return;
     }
     QTextStream in(&file);
-    in.setCodec("UTF-8");
     QString html="";
     while(!in.atEnd())
     {
-        html.append(in.readLine());
+        html.append(in.readLine().toUtf8());
     }
     file.close();
     backgroundColor = QColor(html);
@@ -128,7 +126,7 @@ void MainWindow::saveConfig()
     QFile file("config");
     file.open(QIODevice::WriteOnly | QIODevice::Text);
     QTextStream out(&file);
-    out.setCodec("UTF-8");
+    out.setEncoding(QStringConverter::Utf8);
 
     out.setGenerateByteOrderMark(false);
     out << backgroundColor.name();
